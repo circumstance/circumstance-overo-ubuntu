@@ -7,7 +7,37 @@ This program is free software; you can redistribute it and/or modify it under th
 
 ================================================================
 
+This system image is based on Ubuntu 12.04 LTS (arm-hardfloat).
+
+This uses a custom kernel based on 3.2.23 with kernel support for the overo sound device (necessary in order to use it).
+
+puredata is included, based on 0.43.2 vanilla with alsa support (necessary for this soundcard).
+
+It includes wimpy ( https://github.com/circumstance/wimpy ) and overo-pdgpio ( https://github.com/circumstance/overo_pdgpio ) configured to run automatically via an init script /etc/init.d/puredata
+
+puredata is configured to load the script invoked by /root/startup.pd - we have found this is necessary for audio and some pd objects to work correctly
+
+"puredata stop" to kill puredata and wim
+
 root password - circumstance
+
+=================================================================
+
+To install - circumstance-overo-ubuntu requires a microSD card of 2gb+ and a linux pc to make the bootable media
+
+Download boot.tgz, rootfs.tgz and mkcard-circumstance.sh
+
+In a terminal, change directory to the one where you saved the files - it must be on a volume that supports file permissions - i.e. not FAT32
+
+Make sure mkcard-circumstance.sh is executable ( chmod a+x  mkcard-circumstance.sh )
+
+Insert your SD card in a cardreader, take note of the device name (i.e. /dev/sdb)
+
+use the mkcard script to make the card i.e.:
+
+./mkcard-circumstance.sh /dev/sdb
+
+You now have a bootable card for gumstix overo.
 
 =================================================================
 
